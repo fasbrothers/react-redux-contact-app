@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import nextId from "react-id-generator";
 import { useHistory } from "react-router";
 
 function AddContact() {
@@ -9,7 +8,6 @@ function AddContact() {
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
-  const htmlId = nextId();
   const contacts = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -35,7 +33,7 @@ function AddContact() {
     }
 
     const data = {
-      id: htmlId,
+      id: contacts[contacts.length - 1].id + 1,
       name,
       number,
       email,
